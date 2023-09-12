@@ -15,7 +15,7 @@ import startServer from "./config/functions/startServer.js";
 const runApp = async () => {
 	try {
 		await startServer();
-		console.log('~~PLANETS')
+		console.log('~~FILMS')
 
 	} catch (err) {
 		console.log('ERROR!!');
