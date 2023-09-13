@@ -1,6 +1,6 @@
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
-import env from './var-environments.js'
+import env from './varEnvironments.js'
 import express from 'express';
 
 
