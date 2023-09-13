@@ -1,5 +1,5 @@
 import { Characters } from "../../data/index.js"
 
-export const getCharacters = async (req, res) => {
+export const createCharacter = async (req, res) => {
         res.send(Characters.list());
 }
