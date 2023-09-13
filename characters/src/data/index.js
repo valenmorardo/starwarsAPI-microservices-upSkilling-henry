@@ -1,7 +1,7 @@
 import { CustomError } from '../utils/customError.js';
 import * as charactersData from './characters.json' assert { type: 'json' };
 
-const list = () => {
+const list = async () => {
     return charactersData;
 }
 
