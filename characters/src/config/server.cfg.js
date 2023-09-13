@@ -37,5 +37,7 @@ const allRoutes = router;
 
 server.use('/', allRoutes);
 
+import { errorHandler } from '../controllers/errorHandler.js';
+server.use(errorHandler)
 
 export default server;
