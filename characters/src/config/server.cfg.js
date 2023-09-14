@@ -3,6 +3,9 @@ import cookieParser from 'cookie-parser';
 import env from './varEnvironments.js'
 import express from 'express';
 
+import router from '../routes/index.router.js';
+import { CustomError } from '../utils/customError.js';
+import { errorHandler } from '../controllers/errorHandler.js';
 
 const server = express();
 
@@ -35,16 +38,11 @@ server.use((req, res, next) => {
 
 
 
-import router from '../routes/index.router.js';
-import { CustomError } from '../utils/customError.js';
 const allRoutes = router;
-
 server.use('/', allRoutes);
 server.use("*", (req, res) => {
 	throw new CustomError('Not found', 404)
 })
-
-import { errorHandler } from '../controllers/errorHandler.js';
 server.use(errorHandler)
 
 export default server;

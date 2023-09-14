@@ -3,11 +3,14 @@ import cookieParser from 'cookie-parser';
 import env from './varEnvironments.js'
 import express from 'express';
 
+import router from '../routes/index.router.js';
+
+import { CustomError } from '../utils/customError.js';
+import { errorHandler } from '../controller/errorHandler.js';
 
 const server = express();
 
 server.set('port', env.PORT);
-
 server.use(bodyParser.json());
 server.use(express.json());
 server.use(cookieParser());
@@ -32,16 +35,12 @@ server.use((req, res, next) => {
 	next();
 });
 
-import router from '../routes/index.router.js';
-import { CustomError } from '../utils/customError.js';
-const allRoutes = router;
 
+const allRoutes = router;
 server.use('/', allRoutes);
-server.use("*", (req, res) => {
+server.use("*", (_req, _res) => {
 	throw new CustomError('Not found', 404)
 })
-
-import { errorHandler } from '../controller/errorHandler.js';
 server.use(errorHandler)
 
 
