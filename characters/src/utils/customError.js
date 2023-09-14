@@ -1,11 +1,13 @@
 export class CustomError {
 	message
 	status
-	data
+	error_data
+	aditional_data
 
-	constructor(message, status, data) {
+	constructor(message, status, errorData, aditionalData) {
 		this.status = status ? status : 500;
 		this.message = message;
-		this.data = data;
+		this.error_data = errorData;
+		this.aditional_data = aditionalData;
 	}
 }
