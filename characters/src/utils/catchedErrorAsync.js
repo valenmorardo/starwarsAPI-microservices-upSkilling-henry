@@ -1,0 +1,7 @@
+export const catchedErrorAsync = (fn) => {
+  return (req, res, next) => {
+    fn(req, res).catch((error) => {
+      return next(error);
+    });
+  };
+};
