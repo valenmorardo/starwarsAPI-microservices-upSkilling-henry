@@ -15,7 +15,7 @@ import startServer from "./config/functions/startServer.js";
 const runApp = async () => {
 	try {
 		await startServer();
-		console.log('~~FILMS')
+		console.log(`~~FILMS on port --> ${process.env.PORT}`)
 
 	} catch (err) {
 		console.log('ERROR!!');
