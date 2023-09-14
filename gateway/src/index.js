@@ -11,10 +11,26 @@ server.use(morgan("dev"));
 server.use(
   "/characters",
   createProxyMiddleware({
-    target: "http://localhost:3002",
+    target: "http://characters:3002",
     changeOrigin: true,
   })
 );
+
+server.use(
+    "/films",
+    createProxyMiddleware({
+      target: "http://films:3003",
+      changeOrigin: true,
+    })
+  );
+
+  server.use(
+    "/planets",
+    createProxyMiddleware({
+      target: "http://planets:3004",
+      changeOrigin: true,
+    })
+  );
 
 server.listen(process.env.PORT, () => {
   console.log(`GATEWAY on port --> ${process.env.PORT} `);
