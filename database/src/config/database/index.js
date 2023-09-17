@@ -7,9 +7,13 @@ import planetSchema from "../../schemas/planetSchema.js";
 
 const conn = mongoose.createConnection(env.MONGO_URI);
 
+const Character = conn.model("Character", characterSchema);
+const Film = conn.model("Film", filmSchema);
+const Planet = conn.model("Planet", planetSchema);
 
-export const conectionsSchemas = {
-  Character: conn.model("Character", characterSchema),
-  Film: conn.model("Film", filmSchema),
-  Planet: conn.model("Planet", planetSchema),
-};
+
+export {
+    Character,
+    Film,
+    Planet,
+}
