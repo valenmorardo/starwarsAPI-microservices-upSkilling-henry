@@ -1,12 +1,13 @@
-import { Router } from "express";
 import store from "../../database/index.js";
+import CustomError from "../../utils/customError.js";
+import response from "../../utils/response.js";
 
-export const listData = async (req, res, next) => {
+export const listData = async (req, res, _next) => {
   const { model } = req.params;
-  store[model].list().then((response) => {
-    return res.status(200).send({
-      success: true,
-      response,
-    });
-  });
+
+  const data = await store[model].list();
+  if (!data)
+    throw new CustomError("Error", 404, `Error to find data of ${model}`);
+
+  return response(res, 200, data);
 };
