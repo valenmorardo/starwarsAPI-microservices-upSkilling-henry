@@ -1,4 +1,4 @@
-export const validateModel = (req, res, next) => {
+const validateModel = (req, res, next) => {
   const { model } = req.params;
   if (["Character", "Film", "Planet"].includes(model)) {
     return next();
@@ -6,3 +6,5 @@ export const validateModel = (req, res, next) => {
     throw Error("invalid model")
   }
 };
+
+export default validateModel

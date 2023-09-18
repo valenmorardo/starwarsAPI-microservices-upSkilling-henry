@@ -1,6 +1,6 @@
 import store from "../../database/index.js";
 import CustomError from "../../utils/customError.js";
-import response from "../../utils/response.js";
+import customResponse from "../../utils/customResponse.js";
 
 const listData = async (req, res, _next) => {
   const { model } = req.params;
@@ -9,7 +9,7 @@ const listData = async (req, res, _next) => {
   if (!data)
     throw new CustomError("Error", 404, `Error to find data of ${model}`);
 
-  return response(res, 200, data);
+  return customResponse(res, 200, data);
 };
 
 export default listData;

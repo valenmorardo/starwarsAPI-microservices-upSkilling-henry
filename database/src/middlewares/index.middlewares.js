@@ -1,5 +1,9 @@
-import { validateModel } from "./validateModel.js";
+import validateModel from "./validateModel.js";
 
-export {
-    validateModel,
+
+
+const middleware = {
+    validateModel
 }
+
+export default middleware

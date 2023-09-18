@@ -38,6 +38,7 @@ const allRoutes = router;
 server.use("/", allRoutes);
 
 import errorHandler from "../../controllers/errorHandler.js";
+import CustomError from "../../utils/CustomError.js";
 server.use("*", (_req, _res) => {
   throw new CustomError("Not found", 404);
 });
