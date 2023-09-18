@@ -5,8 +5,8 @@ import express from "express";
 
 import router from "../routes/index.router.js";
 
-import CustomError from "../utils/customError.js";
 import errorHandler from "../controller/errorHandler.js";
+import CustomError from "../utils/customError.js";
 
 const server = express();
 
