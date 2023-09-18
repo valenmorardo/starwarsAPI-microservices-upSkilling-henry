@@ -33,14 +33,16 @@ server.use((req, res, next) => {
   next();
 });
 
-import router from "../../routes/index.router.js";
 
+import router from "../../routes/index.router.js";
 const allRoutes = router;
 server.use("/", allRoutes);
 
-/* server.use("*", (_req, _res) => {
+
+import { errorHandler } from "../../controllers/errorHandler.js";
+server.use("*", (_req, _res) => {
   throw new CustomError("Not found", 404);
 });
-server.use(errorHandler); */
+server.use(errorHandler);
 
 export default server;
