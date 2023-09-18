@@ -2,7 +2,7 @@ import store from "../../database/index.js";
 import CustomError from "../../utils/customError.js";
 import response from "../../utils/response.js";
 
-export const listData = async (req, res, _next) => {
+const listData = async (req, res, _next) => {
   const { model } = req.params;
 
   const data = await store[model].list();
@@ -11,3 +11,5 @@ export const listData = async (req, res, _next) => {
 
   return response(res, 200, data);
 };
+
+export default listData;

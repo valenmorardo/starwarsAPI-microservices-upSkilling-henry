@@ -1,4 +1,4 @@
-export const errorHandler = (error, _req, res, _next) => {
+const errorHandler = (error, _req, res, _next) => {
   const status = error.response ? error.response.status : error.status;
   console.log(error);
 
@@ -8,3 +8,5 @@ export const errorHandler = (error, _req, res, _next) => {
     aditional_data: error.aditional_data,
   });
 };
+
+export default errorHandler;
