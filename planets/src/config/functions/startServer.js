@@ -4,7 +4,7 @@ const startServer = () => {
 	return new Promise((resolve, reject) => {
 		try {
 			server.listen(server.get('port'), () => {
-				console.log(`Servidor corriendo en el puerto: ${server.get('port')}`);
+				console.log(`~PLANETS on port ---> ${server.get('port')}`);
 				resolve();
 			});
 		} catch (error) {
