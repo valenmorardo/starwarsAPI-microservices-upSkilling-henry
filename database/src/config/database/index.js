@@ -11,9 +11,10 @@ const Character = conn.model("Character", characterSchema);
 const Film = conn.model("Film", filmSchema);
 const Planet = conn.model("Planet", planetSchema);
 
-
-export {
+const store = {
     Character,
     Film,
-    Planet,
+    Planet
 }
+
+export default store;
