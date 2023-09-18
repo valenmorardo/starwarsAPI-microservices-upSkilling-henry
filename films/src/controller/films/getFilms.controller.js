@@ -1,7 +1,7 @@
 import { Films } from "../../data/index.js";
-import CustomError from "../../utils/customError.js";
+import CustomError from "../../utils/CustomError.js";
 
-import response from "../../utils/response.js";
+import customResponse from "../../utils/customResponse.js";
 
 const getFilms = async (req, res) => {
   const data = Films.list();
