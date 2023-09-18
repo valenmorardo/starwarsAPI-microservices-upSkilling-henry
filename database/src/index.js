@@ -9,9 +9,7 @@
 //		▄███████▄.▲.▲▲▲▲▲▲▲▲
 //		████████████████████▀▀
 
-
-import startServer from './config/functions/startServer.js'
-
+import startServer from './config/server/startServer.js'
 
 const runApp = async () => {
 	try {

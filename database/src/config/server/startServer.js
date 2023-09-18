@@ -1,4 +1,4 @@
-import server from "../server.cfg.js";
+import server from "./server.cfg.js";
 
 const startServer = () => {
   return new Promise((resolve, reject) => {

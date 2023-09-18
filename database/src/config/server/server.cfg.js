@@ -1,9 +1,9 @@
 import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
-import env from "./varEnvironments.js";
+import env from "../varEnvironments.js";
 import express from "express";
 
-import morgan from 'morgan'
+import morgan from "morgan";
 
 const server = express();
 
@@ -33,8 +33,7 @@ server.use((req, res, next) => {
   next();
 });
 
-
-import router from "../routes/index.router.js";
+import router from "../../routes/index.router.js";
 
 const allRoutes = router;
 server.use("/", allRoutes);
