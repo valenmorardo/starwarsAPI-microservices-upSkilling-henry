@@ -1,8 +1,9 @@
-import { getFilms } from "./films/getFilms.controller.js";
+import getFilms from "./films/getFilms.controller.js";
 
-import { catchedErrorAsync } from "../utils/catchedErrorAsync.js";
+import catchedErrorAsync from "../utils/catchedErrorAsync.js";
 
+const controller = {
+  getFilms: catchedErrorAsync(getFilms),
+};
 
-export const controller = {
-    getFilms: catchedErrorAsync(getFilms)
-}
+export default controller;

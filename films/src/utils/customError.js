@@ -1,4 +1,4 @@
-export class CustomError {
+export default class CustomError {
 	message
 	status
 	error_data
