@@ -16,14 +16,14 @@ const characterSchema = new Schema({
 
 characterSchema.statics.list = async function () {
   return await this.find()
-    .populate("homeworld", ["_id", "name"])
-    .populate("films", ["_id", "title"]);
+    .populate("homeworld", ["name"])
+    .populate("films", ["title"]);
 };
 
 characterSchema.statics.get = async function (id) {
   return await this.findById(id)
-    .populate("homeworld", ["_id", "name"])
-    .populate("films", ["_id", "title"]);
+    .populate("homeworld", ["name"])
+    .populate("films", ["title"]);
 };
 
 characterSchema.statics.insert = async function (character) {

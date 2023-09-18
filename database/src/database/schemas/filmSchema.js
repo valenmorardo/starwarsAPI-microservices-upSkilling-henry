@@ -13,14 +13,14 @@ const filmSchema = new Schema({
 
 filmSchema.statics.list = async function () {
   return await this.find()
-    .populate("characters", ["_id", "name"])
-    .populate("planets", ["_id", "name"]);
+    .populate("characters", ["name"])
+    .populate("planets", ["name"]);
 };
 
 filmSchema.statics.get = async function (id) {
   return await this.findById(id)
-  .populate("characters", ["_id", "name"])
-  .populate("planets", ["_id", "name"]);
+  .populate("characters", [ "name"])
+  .populate("planets", ["name"]);
 };
 
 filmSchema.statics.insert = async function (film) {
