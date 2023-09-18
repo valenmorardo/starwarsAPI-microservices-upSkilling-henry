@@ -1,5 +1,4 @@
-
-export const errorHandler = (
+const errorHandler = (
 	error,
 	_req,
 	res,
@@ -14,3 +13,5 @@ export const errorHandler = (
 		aditional_data: error.aditional_data
 	});
 };
+
+export default errorHandler
