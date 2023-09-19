@@ -1,17 +1,49 @@
 import { Schema } from "mongoose";
 
 const planetSchema = new Schema({
-  _id: String,
-  name: String,
-  rotation_period: String,
-  orbital_period: String,
-  diameter: String,
-  climate: String,
-  gravity: String,
-  terrain: String,
-  surface_water: String,
-  res_idents: [{ type: String, ref: "Character" }],
-  films: [{ type: String, ref: "Film" }],
+  name: {
+    type: String,
+    unique: true,
+    required: [true, "El nombre es obligatorio"],
+  },
+  rotation_period: {
+    type: String,
+    default: () => "Unknown",
+  },
+  orbital_period: {
+    type: String,
+    default: () => "Unknown",
+  },
+  diameter: {
+    type: String,
+    default: () => "Unknown",
+  },
+  climate: {
+    type: String,
+    default: () => "Unknown",
+  },
+  gravity: {
+    type: String,
+    default: () => "Unknown",
+  },
+  terrain: {
+    type: String,
+    default: () => "Unknown",
+  },
+  surface_water: {
+    type: String,
+    default: () => "Unknown",
+  },
+  res_idents: { 
+    type: String,
+    default: () => ["Unknown"],
+    ref: "Character",
+  },
+  films: { 
+    type: String, 
+    default: () => ["Unknown"],
+    ref: "Film",
+  },
 });
 
 planetSchema.statics.list = async function () {
