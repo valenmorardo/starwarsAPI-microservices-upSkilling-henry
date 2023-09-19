@@ -36,7 +36,7 @@ const characterSchema = new Schema({
   },
   homeworld: {
     type: String,
-    default: () => "Unknown",
+    default: () => ["Unknown"],
     ref: "Planet",
   },
   films: {
