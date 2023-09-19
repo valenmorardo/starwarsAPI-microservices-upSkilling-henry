@@ -4,7 +4,7 @@ const characterSchema = new Schema({
   name: {
     type: String,
     unique: true,
-    required: [true, "El nombre es obligatorio xddd"],
+    required: [true, "El nombre es obligatorio"],
   },
   height: {
     type: String,
