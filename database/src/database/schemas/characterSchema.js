@@ -1,17 +1,49 @@
 import { Schema } from "mongoose";
 
 const characterSchema = new Schema({
-  _id: String,
-  name: String,
-  height: String,
-  mass: String,
-  hair_color: String,
-  skin_color: String,
-  eye_color: String,
-  birth_year: String,
-  gender: String,
-  homeworld: { type: String, ref: "Planet" },
-  films: [{ type: String, ref: "Film" }],
+  name: {
+    type: String,
+    unique: true,
+    required: [true, "El nombre es obligatorio xddd"],
+  },
+  height: {
+    type: String,
+    default: () => "Unknown",
+  },
+  mass: {
+    type: String,
+    default: () => "Unknown",
+  },
+  hair_color: {
+    type: String,
+    default: () => "Unknown",
+  },
+  skin_color: {
+    type: String,
+    default: () => "Unknown",
+  },
+  eye_color: {
+    type: String,
+    default: () => "Unknown",
+  },
+  birth_year: {
+    type: String,
+    default: () => "Unknown",
+  },
+  gender: {
+    type: String,
+    default: () => "Unknown",
+  },
+  homeworld: {
+    type: String,
+    default: () => "Unknown",
+    ref: "Planet",
+  },
+  films: {
+    type: [String],
+    default: () => ["Unknown"],
+    ref: "Film",
+  },
 });
 
 characterSchema.statics.list = async function () {
@@ -27,7 +59,7 @@ characterSchema.statics.get = async function (id) {
 };
 
 characterSchema.statics.insert = async function (character) {
-    return await this.create(character)
+  return await this.create(character);
 };
 
 export default characterSchema;
