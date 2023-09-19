@@ -1,8 +1,11 @@
 import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
-import env from "./varEnvironments.js";
+import env from "../varEnvironments.js";
 import express from "express";
 import morgan from "morgan";
+
+import { createProxyMiddleware } from "http-proxy-middleware";
+
 
 const server = express();
 
@@ -33,7 +36,30 @@ server.use((req, res, next) => {
   next();
 });
 
+// PROXYS MIDDLEWARES
+server.use(
+  "/characters",
+  createProxyMiddleware({
+    target: "http://characters:3002",
+    changeOrigin: true,
+  })
+);
 
+server.use(
+  "/films",
+  createProxyMiddleware({
+    target: "http://films:3003",
+    changeOrigin: true,
+  })
+);
+
+server.use(
+  "/planets",
+  createProxyMiddleware({
+    target: "http://planets:3004",
+    changeOrigin: true,
+  })
+);
 
 
 export default server;
