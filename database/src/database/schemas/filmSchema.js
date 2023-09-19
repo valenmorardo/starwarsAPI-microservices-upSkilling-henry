@@ -1,14 +1,37 @@
 import { Schema } from "mongoose";
 
 const filmSchema = new Schema({
-  _id: String,
-  title: String,
-  opening_crawl: String,
-  director: String,
-  producer: String,
-  release_date: Date,
-  characters: [{ type: String, ref: "Character" }],
-  planets: [{ type: String, ref: "Planet" }],
+  title: {
+    type: String,
+    unique: true,
+    required: [true, "El titulo es obligatorio"],
+  },
+  opening_crawl: {
+    type: String,
+    default: () => "Unknown",
+  },
+  director: {
+    type: String,
+    default: () => "Unknown",
+  },
+  producer: {
+    type: String,
+    default: () => "Unknown",
+  },
+  release_date: {
+    type: Date,
+    default: () => "Unknown",
+  },
+  characters: { 
+    type: [String],
+    default: () => ["Unknown"],
+    ref: "Character",
+  },
+  planets: { 
+    type: String,
+    default: () => ["Unknown"],
+    ref: "Planet",
+},
 });
 
 filmSchema.statics.list = async function () {
