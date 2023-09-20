@@ -68,7 +68,7 @@ characterSchema.statics.insert = async function (newCharacter) {
   });
 
   return await this.create({
-    _id: personajesTotales + 2,
+    _id: (personajesTotales + 2).toString(),
     name: newCharacter.name,
     height: newCharacter.height,
     mass: newCharacter.mass,

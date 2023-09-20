@@ -69,7 +69,7 @@ planetSchema.statics.insert = async function (newPlanet) {
   });
 
   return await this.create({
-    _id: planetsTotales + 2,
+    _id: (planetsTotales + 2).toString(),
     name: newPlanet.name,
     rotation_period: newPlanet.rotation_period,
     orbital_period: newPlanet.orbital_period,

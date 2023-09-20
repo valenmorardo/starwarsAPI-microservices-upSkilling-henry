@@ -56,7 +56,7 @@ filmSchema.statics.insert = async function (newFilm) {
   });
 
   return await this.create({
-    _id: filmsTotales + 2,
+    _id: (filmsTotales + 2).toString(),
     title: newFilm.title,
     opening_crawl: newFilm.opening_crawl,
     director: newFilm.director,
