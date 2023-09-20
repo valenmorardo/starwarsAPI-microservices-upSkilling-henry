@@ -1,6 +1,10 @@
 import { Schema } from "mongoose";
 
 const planetSchema = new Schema({
+  _id: {
+    type: String,
+    unique: true,
+  },
   name: {
     type: String,
     unique: true,
@@ -35,12 +39,12 @@ const planetSchema = new Schema({
     default: () => "Unknown",
   },
   res_idents: { 
-    type: String,
+    type: [String],
     default: () => ["Unknown"],
     ref: "Character",
   },
   films: { 
-    type: String, 
+    type: [String], 
     default: () => ["Unknown"],
     ref: "Film",
   },
@@ -58,8 +62,25 @@ planetSchema.statics.get = async function (id) {
   .populate("films", ["title"]);
 };
 
-planetSchema.statics.insert = async function (film) {
-  return await this.create(film);
+planetSchema.statics.insert = async function (newPlanet) {
+
+  const planetsTotales = await this.find().then((planets) => {
+    return planets.length;
+  });
+
+  return await this.create({
+    _id: planetsTotales + 2,
+    name: newPlanet.name,
+    rotation_period: newPlanet.rotation_period,
+    orbital_period: newPlanet.orbital_period,
+    diameter: newPlanet.diameter,
+    climate: newPlanet.climate,
+    gravity: newPlanet.gravity,
+    terrain: newPlanet.terrain,
+    surface_water: newPlanet.surface_water,
+    res_idents: newPlanet.res_idents,
+    films: newPlanet.films,
+  });
 };
 
 export default planetSchema;

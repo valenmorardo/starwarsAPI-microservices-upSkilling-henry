@@ -1,6 +1,10 @@
 import { Schema } from "mongoose";
 
 const filmSchema = new Schema({
+  _id: {
+    type: String,
+    unique: true,
+  },
   title: {
     type: String,
     unique: true,
@@ -20,7 +24,7 @@ const filmSchema = new Schema({
   },
   release_date: {
     type: Date,
-    default: () => "Unknown",
+    default: () => Date.now(),
   },
   characters: { 
     type: [String],
@@ -28,7 +32,7 @@ const filmSchema = new Schema({
     ref: "Character",
   },
   planets: { 
-    type: String,
+    type: [String],
     default: () => ["Unknown"],
     ref: "Planet",
 },
@@ -46,8 +50,22 @@ filmSchema.statics.get = async function (id) {
   .populate("planets", ["name"]);
 };
 
-filmSchema.statics.insert = async function (film) {
-  return await this.create(film);
+filmSchema.statics.insert = async function (newFilm) {
+  const filmsTotales = await this.find().then((films) => {
+    return films.length;
+  });
+
+  return await this.create({
+    _id: filmsTotales + 2,
+    title: newFilm.title,
+    opening_crawl: newFilm.opening_crawl,
+    director: newFilm.director,
+    producer: newFilm.producer,
+    release_date: newFilm.release_date,
+    characters: newFilm.characters,
+    planets: newFilm.planets,
+
+  });
 };
 
 export default filmSchema;

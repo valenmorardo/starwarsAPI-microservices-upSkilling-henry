@@ -1,6 +1,10 @@
 import { Schema } from "mongoose";
 
 const characterSchema = new Schema({
+  _id: {
+    type: String,
+    unique: true,
+  },
   name: {
     type: String,
     unique: true,
@@ -36,7 +40,7 @@ const characterSchema = new Schema({
   },
   homeworld: {
     type: String,
-    default: () => ["Unknown"],
+    default: () => "Unknown",
     ref: "Planet",
   },
   films: {
@@ -58,8 +62,24 @@ characterSchema.statics.get = async function (id) {
     .populate("films", ["title"]);
 };
 
-characterSchema.statics.insert = async function (character) {
-  return await this.create(character);
+characterSchema.statics.insert = async function (newCharacter) {
+  const personajesTotales = await this.find().then((personajes) => {
+    return personajes.length;
+  });
+
+  return await this.create({
+    _id: personajesTotales + 2,
+    name: newCharacter.name,
+    height: newCharacter.height,
+    mass: newCharacter.mass,
+    hair_color: newCharacter.hair_color,
+    skin_color: newCharacter.skin_color,
+    eye_color: newCharacter.eye_color,
+    birth_year: newCharacter.birth_year,
+    gender: newCharacter.gender,
+    homeworld: newCharacter.homeworld,
+    films: newCharacter.films,
+  });
 };
 
 export default characterSchema;
