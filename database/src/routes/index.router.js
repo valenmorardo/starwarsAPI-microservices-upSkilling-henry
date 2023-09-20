@@ -2,7 +2,7 @@ import { Router } from "express";
 
 import controller from "../controllers/index.controllers.js";
 import middleware from "../middlewares/index.middlewares.js";
-import store from "../database/index.js";
+
 
 const router = Router();
 
@@ -15,13 +15,6 @@ router.get(
   controller.getDataById
 );
 
-router.post("/:model/create", (req, res) => {
-  const { model } = req.params;
-
-  store[model].insert(req.body).then((response) => {
-    console.log(response);
-    res.send(response);
-  });
-});
+router.post("/:model/create", middleware.validateModelParams, controller.insertNewRegister);
 
 export default router;
