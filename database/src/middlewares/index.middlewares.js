@@ -2,8 +2,8 @@ import validateModelParams from "./validateModelParams.js";
 import validateIdParams from "./validateIdParams.js";
 
 const middleware = {
-    validateModelParams,
-    validateIdParams,
-}
+  validateModelParams,
+  validateIdParams,
+};
 
-export default middleware
+export default middleware;

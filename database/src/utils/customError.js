@@ -8,6 +8,6 @@ export default class CustomError {
     this.status = status ? status : 500;
     this.message = message;
     this.error_data = errorData;
-    this.aditional_data = aditionalData
+    this.aditional_data = aditionalData;
   }
 }

@@ -1,9 +1,7 @@
-import validator from "validator"
+import validator from "validator";
 
 const isNumber = (prop) => {
-
-    return validator.isInt((prop.toString()))
-
-}
+  return validator.isInt(prop.toString());
+};
 
 export default isNumber;

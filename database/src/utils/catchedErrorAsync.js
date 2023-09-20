@@ -6,4 +6,4 @@ const catchedErrorAsync = (fn) => {
   };
 };
 
-export default catchedErrorAsync
+export default catchedErrorAsync;

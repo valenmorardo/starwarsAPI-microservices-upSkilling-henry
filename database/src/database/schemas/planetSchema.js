@@ -38,13 +38,13 @@ const planetSchema = new Schema({
     type: String,
     default: () => "Unknown",
   },
-  res_idents: { 
+  res_idents: {
     type: [String],
     default: () => ["Unknown"],
     ref: "Character",
   },
-  films: { 
-    type: [String], 
+  films: {
+    type: [String],
     default: () => ["Unknown"],
     ref: "Film",
   },
@@ -58,12 +58,11 @@ planetSchema.statics.list = async function () {
 
 planetSchema.statics.get = async function (id) {
   return await this.findById(id)
-  .populate("res_idents", ["name"])
-  .populate("films", ["title"]);
+    .populate("res_idents", ["name"])
+    .populate("films", ["title"]);
 };
 
 planetSchema.statics.insert = async function (newPlanet) {
-
   const planetsTotales = await this.find().then((planets) => {
     return planets.length;
   });
