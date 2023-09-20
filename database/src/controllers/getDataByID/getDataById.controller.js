@@ -1,5 +1,5 @@
 import store from "../../database/index.js";
-import CustomError from "../../utils/CustomError.js";
+import CustomError from "../../utils/customError.js";
 import response from "../../utils/customResponse.js";
 
 const getDataById = async (req, res, next) => {
