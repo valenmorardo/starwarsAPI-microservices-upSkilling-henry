@@ -1,6 +1,5 @@
 const errorHandler = (error, _req, res, _next) => {
   const status = error.response ? error.response.status : error.status;
-  console.log(error);
 
   return res.status(status || 500).send({
     status_message: "Error",
