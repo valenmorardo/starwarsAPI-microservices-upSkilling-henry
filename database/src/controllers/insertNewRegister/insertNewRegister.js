@@ -8,10 +8,7 @@ const insertNewRegister = async (req, res, _next) => {
 
   const newRegister = await store[model].insert(dataNewRegister);
 
-  customResponse(res, 201, {
-    message: `New register to ${model} added succesfully!`,
-    newRegister,
-  });
+  customResponse(res, 201, newRegister);
 };
 
-export default insertNewRegister
+export default insertNewRegister;
