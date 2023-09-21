@@ -59,7 +59,7 @@ characterSchema.statics.list = function () {
       return response;
     })
     .catch((error) => {
-      throw new CustomError("Error to find data of Characters", error.status, error.message);
+      throw new CustomError("Error to list data of Characters", error.status, error.message);
     });
 };
 
@@ -71,7 +71,7 @@ characterSchema.statics.get = function (id) {
       return response;
     })
     .catch((error) => {
-      throw new CustomError("Error to find data of Character", 404, error.message);
+      throw new CustomError("Error to get data of Character", 404, error.message);
     });
 };
 
@@ -96,7 +96,7 @@ characterSchema.statics.insert = function (newCharacter) {
       });
     })
     .catch((error) => {
-      throw new CustomError("Error to create Character", error.status, error.message); // Lanzamos el error para que sea manejado en el controlador
+      throw new CustomError("Error to insert Character", error.status, error.message); // Lanzamos el error para que sea manejado en el controlador
     });
 };
 
