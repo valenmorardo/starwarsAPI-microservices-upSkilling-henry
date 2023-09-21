@@ -1,4 +1,5 @@
 import { Schema } from "mongoose";
+import CustomError from "../../utils/customError.js";
 
 const characterSchema = new Schema({
   _id: {
@@ -50,36 +51,54 @@ const characterSchema = new Schema({
   },
 });
 
-characterSchema.statics.list = async function () {
-  return await this.find()
+characterSchema.statics.list = function () {
+  return this.find()
     .populate("homeworld", ["name"])
-    .populate("films", ["title"]);
+    .populate("films", ["title"])
+    .then((response) => {
+      return response;
+    })
+    .catch((error) => {
+      throw new CustomError("Error to find data of Characters", error.status, error.message);
+    });
 };
 
-characterSchema.statics.get = async function (id) {
-  return await this.findById(id)
+characterSchema.statics.get = function (id) {
+  return this.findById(id)
     .populate("homeworld", ["name"])
-    .populate("films", ["title"]);
+    .populate("films", ["title"])
+    .then((response) => {
+      return response;
+    })
+    .catch((error) => {
+      throw new CustomError("Error to find data of Character", 404, error.message);
+    });
 };
 
-characterSchema.statics.insert = async function (newCharacter) {
-  const personajesTotales = await this.find().then((personajes) => {
-    return personajes.length;
-  });
-
-  return await this.create({
-    _id: (personajesTotales + 2).toString(),
-    name: newCharacter.name,
-    height: newCharacter.height,
-    mass: newCharacter.mass,
-    hair_color: newCharacter.hair_color,
-    skin_color: newCharacter.skin_color,
-    eye_color: newCharacter.eye_color,
-    birth_year: newCharacter.birth_year,
-    gender: newCharacter.gender,
-    homeworld: newCharacter.homeworld,
-    films: newCharacter.films,
-  });
+characterSchema.statics.insert = function (newCharacter) {
+  return this.find()
+    .then((personajes) => {
+      const personajesTotales = personajes.length;
+      
+      
+      return this.create({
+        _id: (personajesTotales + 2).toString(),
+        name: newCharacter.name,
+        height: newCharacter.height,
+        mass: newCharacter.mass,
+        hair_color: newCharacter.hair_color,
+        skin_color: newCharacter.skin_color,
+        eye_color: newCharacter.eye_color,
+        birth_year: newCharacter.birth_year,
+        gender: newCharacter.gender,
+        homeworld: newCharacter.homeworld,
+        films: newCharacter.films,
+      });
+    })
+    .catch((error) => {
+      throw new CustomError("Error to create Character", error.status, error.message); // Lanzamos el error para que sea manejado en el controlador
+    });
 };
+
 
 export default characterSchema;
