@@ -1,13 +1,14 @@
 import { Planets } from "../../data/index.js";
 import customResponse from "../../utils/customResponse.js";
 import CustomError from "../../utils/CustomError.js";
+import axios from 'axios'
 
 const getPlanets = async (req, res) => {
-  const data = Planets.list();
+  const response = await axios.get("http://database:3005/Planet");
 
-  if (!data) throw CustomError("error", 400, "error to find planets");
+  if (!response.data) throw CustomError("error", 400, "error to find planets");
 
-  customResponse(res, 200, data)
+  customResponse(res, 200, response.data)
 };
 
 export default getPlanets;
