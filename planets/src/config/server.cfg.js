@@ -4,7 +4,7 @@ import env from "./varEnvironments.js";
 import express from "express";
 
 import router from '../routes/index.router.js';
-import CustomError from '../utils/customError.js';
+import CustomError from '../utils/CustomError.js';
 import errorHandler from '../controller/errorHandler.js';
 
 const server = express();
