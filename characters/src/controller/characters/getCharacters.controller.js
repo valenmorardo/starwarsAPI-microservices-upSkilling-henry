@@ -1,13 +1,15 @@
 import { Characters } from "../../data/index.js";
 import customResponse from "../../utils/customResponse.js";
 import CustomError from "../../utils/customError.js";
+import axios from "axios";
 
 export const getCharacters = async (req, res) => {
-  var data = Characters.list();
+  const response = await axios.get("http://database:3005/Character");
 
-  data = null
+  console.log(response.data);
 
-  if (!data) throw new CustomError("error", 400, "error to find characters");
+  if (!response.data)
+    throw new CustomError("error", 400, "error to find characters");
 
-  customResponse(res, 200, data);
+  customResponse(res, 200, response.data);
 };
