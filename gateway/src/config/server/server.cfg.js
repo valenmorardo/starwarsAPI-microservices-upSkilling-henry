@@ -61,5 +61,9 @@ server.use(
   })
 );
 
+server.use("*", (_req, _res) => {
+  throw new Error("URL Not found", 404);
+});
+
 
 export default server;
