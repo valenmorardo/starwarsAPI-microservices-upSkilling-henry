@@ -22,8 +22,8 @@ Todos tienen que estar montados y corriendo en un contenedor de docker porque de
 
 ## Gateway:
 
-El gateway va a ser el unico punto de entrada q vamos a tener. Desde aca vamos a tener acceso, una vez levantados todos los microservicios en docker y conectados en la misma red, a */characters* - */films* - */planets*. En gateway se crean los proxys para dirigirnos al microservicio correspondiente, dependiendo del a ruta.
-Basicamente el gateway le hace llamados a otros microservicios (characters, films y planets).
+El gateway va a ser el unico punto de entrada q vamos a tener. Desde aca vamos a tener acceso, una vez levantados todos los microservicios en docker y conectados en la misma red, a */characters* - */films* - */planets*. En gateway se crean los proxys para dirigirnos al microservicio correspondiente, dependiendo de la ruta.
+Basicamente el gateway le hace llamados a otros microservicios (characters, films y planets) para obtener los datos.
 
 
 
