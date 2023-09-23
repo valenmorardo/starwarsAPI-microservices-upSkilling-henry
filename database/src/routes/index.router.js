@@ -15,6 +15,6 @@ router.get(
   controller.getDataById
 );
 
-router.post("/:model/create", middleware.validateModelParams, controller.insertNewRegister);
+router.post("/:model/create", middleware.validateModelParams, middleware.validateDataBody, controller.insertNewRegister);
 
 export default router;
