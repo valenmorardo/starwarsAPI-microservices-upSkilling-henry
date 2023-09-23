@@ -2,7 +2,7 @@ import { Schema } from "mongoose";
 
 const filmSchema = new Schema({
   _id: {
-    type: String,
+    type: Number,
     unique: true,
   },
   title: {
@@ -23,17 +23,15 @@ const filmSchema = new Schema({
     default: () => "Unknown",
   },
   release_date: {
-    type: Date,
-    default: () => Date.now(),
+    type: String,
+    default: () => "Unknown",
   },
   characters: {
-    type: [String],
-    default: () => ["Unknown"],
+    type: [Number],
     ref: "Character",
   },
   planets: {
-    type: [String],
-    default: () => ["Unknown"],
+    type: [Number],
     ref: "Planet",
   },
 });

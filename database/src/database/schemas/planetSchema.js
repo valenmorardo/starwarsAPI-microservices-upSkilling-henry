@@ -2,7 +2,7 @@ import { Schema } from "mongoose";
 
 const planetSchema = new Schema({
   _id: {
-    type: String,
+    type: Number,
     unique: true,
   },
   name: {
@@ -11,16 +11,13 @@ const planetSchema = new Schema({
     required: [true, "El nombre es obligatorio"],
   },
   rotation_period: {
-    type: String,
-    default: () => "Unknown",
+    type: Number,
   },
   orbital_period: {
-    type: String,
-    default: () => "Unknown",
+    type: Number,
   },
   diameter: {
-    type: String,
-    default: () => "Unknown",
+    type: Number,
   },
   climate: {
     type: String,
@@ -35,17 +32,16 @@ const planetSchema = new Schema({
     default: () => "Unknown",
   },
   surface_water: {
-    type: String,
-    default: () => "Unknown",
+    type: Number,
   },
   res_idents: {
-    type: [String],
-    default: () => ["Unknown"],
+    type: [Number],
+
     ref: "Character",
   },
   films: {
-    type: [String],
-    default: () => ["Unknown"],
+    type: [Number],
+
     ref: "Film",
   },
 });
@@ -74,11 +70,7 @@ planetSchema.statics.get = async function (id) {
       return response;
     })
     .catch((error) => {
-      throw new CustomError(
-        "Error to get data of Planet",
-        404,
-        error.message
-      );
+      throw new CustomError("Error to get data of Planet", 404, error.message);
     });
 };
 
@@ -86,7 +78,7 @@ planetSchema.statics.insert = function (newPlanet) {
   return this.find()
     .then((planets) => {
       const planetsTotales = planets.length;
-      
+
       return this.create({
         _id: (planetsTotales + 2).toString(),
         name: newPlanet.name,
@@ -102,9 +94,12 @@ planetSchema.statics.insert = function (newPlanet) {
       });
     })
     .catch((error) => {
-      throw new CustomError("Error to insert planet", error.status, error.message); // Lanzamos el error para que sea manejado en el controlador
+      throw new CustomError(
+        "Error to insert planet",
+        error.status,
+        error.message
+      ); // Lanzamos el error para que sea manejado en el controlador
     });
 };
-
 
 export default planetSchema;

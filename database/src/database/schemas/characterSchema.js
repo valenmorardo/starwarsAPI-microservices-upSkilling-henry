@@ -3,7 +3,7 @@ import CustomError from "../../utils/customError.js";
 
 const characterSchema = new Schema({
   _id: {
-    type: String,
+    type: Number,
     unique: true,
   },
   name: {
@@ -12,12 +12,10 @@ const characterSchema = new Schema({
     required: [true, "El nombre es obligatorio"],
   },
   height: {
-    type: String,
-    default: () => "Unknown",
+    type: Number,
   },
   mass: {
-    type: String,
-    default: () => "Unknown",
+    type: Number,
   },
   hair_color: {
     type: String,
@@ -40,13 +38,13 @@ const characterSchema = new Schema({
     default: () => "Unknown",
   },
   homeworld: {
-    type: String,
-    default: () => "Unknown",
+    type: Number,
+
     ref: "Planet",
   },
   films: {
-    type: [String],
-    default: () => ["Unknown"],
+    type: [Number],
+
     ref: "Film",
   },
 });
@@ -59,7 +57,11 @@ characterSchema.statics.list = function () {
       return response;
     })
     .catch((error) => {
-      throw new CustomError("Error to list data of Characters", error.status, error.message);
+      throw new CustomError(
+        "Error to list data of Characters",
+        error.status,
+        error.message
+      );
     });
 };
 
@@ -71,7 +73,11 @@ characterSchema.statics.get = function (id) {
       return response;
     })
     .catch((error) => {
-      throw new CustomError("Error to get data of Character", 404, error.message);
+      throw new CustomError(
+        "Error to get data of Character",
+        404,
+        error.message
+      );
     });
 };
 
@@ -79,8 +85,7 @@ characterSchema.statics.insert = function (newCharacter) {
   return this.find()
     .then((personajes) => {
       const personajesTotales = personajes.length;
-      
-      
+
       return this.create({
         _id: (personajesTotales + 2).toString(),
         name: newCharacter.name,
@@ -96,9 +101,12 @@ characterSchema.statics.insert = function (newCharacter) {
       });
     })
     .catch((error) => {
-      throw new CustomError("Error to insert Character", error.status, error.message); // Lanzamos el error para que sea manejado en el controlador
+      throw new CustomError(
+        "Error to insert Character",
+        error.status,
+        error.message
+      ); // Lanzamos el error para que sea manejado en el controlador
     });
 };
-
 
 export default characterSchema;
