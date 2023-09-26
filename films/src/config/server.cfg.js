@@ -5,7 +5,7 @@ import express from "express";
 
 import router from "../routes/index.router.js";
 
-import CustomError from "../utils/CustomError.js";
+
 import errorHandler from "../controller/errorHandler.js";
 
 const server = express();
@@ -38,7 +38,7 @@ server.use((req, res, next) => {
 const allRoutes = router;
 server.use("/", allRoutes);
 server.use("*", (_req, _res) => {
-  throw new CustomError("Not found", 404);
+  throw new Error("Not found");
 });
 server.use(errorHandler);
 
