@@ -6,7 +6,7 @@ import axios from "axios";
 export const getCharacters = async (req, res) => {
   const response = await axios.get("http://database:3005/Character");
 
-  console.log(response.data);
+  
 
   if (!response.data)
     throw new CustomError("error", 400, "error to find characters");
