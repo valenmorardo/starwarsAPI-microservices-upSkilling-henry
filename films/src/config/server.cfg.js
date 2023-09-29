@@ -2,7 +2,7 @@ import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
 import env from "./varEnvironments.js";
 import express from "express";
-
+import morgan from 'morgan'
 import router from "../routes/index.router.js";
 
 
@@ -11,6 +11,7 @@ import errorHandler from "../controller/errorHandler.js";
 const server = express();
 
 server.set("port", env.PORT);
+server.use(morgan("dev"));
 server.use(bodyParser.json());
 server.use(express.json());
 server.use(cookieParser());

@@ -1,5 +1,5 @@
 import { Films } from "../../data/index.js";
-import CustomError from "../../utils/customError.js";
+import CustomError from "../../utils/CustomError.js";
 
 import customResponse from "../../utils/customResponse.js";
 
