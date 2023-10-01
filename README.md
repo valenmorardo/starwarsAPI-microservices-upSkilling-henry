@@ -7,7 +7,9 @@ Se pueden hacer peticiones a las siguientes direcciones:
 
 
 
-# Docker config
+
+# Para configurar el proyecto por tu cuenta:
+## Docker config
 
 1. Agregar los puertos al .env
    Estos puertos deben ser los mismos q utiliza cada microservicio en su propio archivo .env
