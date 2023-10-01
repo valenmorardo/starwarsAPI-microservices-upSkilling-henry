@@ -1,3 +1,12 @@
+# Test project:
+Se pueden hacer peticiones a las siguientes direcciones:
+
+- 34.16.180.82:3001/characters
+- 34.16.180.82:3001/films
+- 34.16.180.82:3001/planets
+
+
+
 # Docker config
 
 1. Agregar los puertos al .env
