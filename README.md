@@ -1,4 +1,15 @@
-# Docker config
+# Test project:
+Se pueden hacer peticiones a las siguientes direcciones:
+
+- 34.16.180.82:3001/characters
+- 34.16.180.82:3001/films
+- 34.16.180.82:3001/planets
+
+
+
+
+# Para configurar el proyecto por tu cuenta:
+## Docker config
 
 1. Agregar los puertos al .env
    Estos puertos deben ser los mismos q utiliza cada microservicio en su propio archivo .env
