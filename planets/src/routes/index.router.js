@@ -5,8 +5,7 @@ const router = Router();
 
 router.get("/", (req, res) => res.status(200).send("This is PLANETS site"));
 
-router.get('/planets', controller.getPlanets)
-
-
+router.get("/getPlanets", controller.getPlanets);
+router.post("/newPlanet", controller.postNewPlanet);
 
 export default router;
