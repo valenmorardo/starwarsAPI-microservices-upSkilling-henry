@@ -4,7 +4,8 @@ const router = Router();
 
 router.get("/", (req, res) => res.status(200).send("This is FILMS site"));
 
-router.get('/films', controller.getFilms)
+router.get('/getFilms', controller.getFilms)
+router.post('/newFilm', controller.postNewFilm);
 
 
 
