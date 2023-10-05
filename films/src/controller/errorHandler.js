@@ -9,7 +9,7 @@ const errorHandler = (
 
 	return res.status(status || 500).send({
 		message: error.message,
-		error_data: error.error_data,
+		error_data: error.error_data || error.response.data,
 		aditional_data: error.aditional_data
 	});
 };
