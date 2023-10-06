@@ -5,6 +5,7 @@ const router = Router();
 
 router.get("/", (req, res) => res.status(200).send("This is CHARACTERS site"));
 
-router.get("/characters", controller.getCharacters);
+router.get('/getCharacters', controller.getCharacters);
+router.post('/newCharacter', controller.postNewCharacter);
 
 export default router;
