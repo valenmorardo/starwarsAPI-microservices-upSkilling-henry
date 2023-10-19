@@ -5,7 +5,7 @@ const proxyCharacters = createProxyMiddleware({
   changeOrigin: true,
   pathRewrite: {
     "^/getCharacters": "/getCharacters",
-    "^/newPlanet": "/newPlanet",
+    "^/newCharacter": "/newCharacter",
     "^/characters": "/",
   },
 });
